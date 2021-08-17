@@ -1,0 +1,54 @@
+### Ansible Ad Hoc Commands syntax ###
+ansible IPADDR -m module -a arguments
+ansible Hostgroup -m module -a arguments
+ansible all -m module -a arguments
+
+
+### Ansible ad hoc command with inventory ###
+ansible all -m ping
+
+### Ansible ad hoc command to install any package ###
+ansible all -m yum -a "name=httpd state=present"
+ansible all -m apt -a "name=apache2 state=present"
+
+### Ansible adhoc commands to Manage Services ###
+ansible all -m service -a "name=httpd state=started"
+ansible all -m service -a "name=apache2 state=started"
+
+-To restart the service:
+ansible all -m service -a "name=httpd state=restarted"
+ansible all -m service -a "name=apache2 state=restarted"
+
+To stop the service:
+ansible all -m service -a "name=httpd state=stopped"
+ansible all -m service -a "name=apache2 state=stopped"
+
+### Ansible ad hoc command to create folder ###
+ansible all -m file -a "path=/project/ansible state=directory"
+
+Here, ansible directory will created in hosts systems.
+
+### Ansible ad hoc commands copy ###
+ansible all -m copy -a "src=/root/home/index.html dest=/var/www/html/"
+
+Here, it will copy the file called index.html from ansible control machine to all servers
+
+### Ansible ad hoc command to create a file ###
+ansible all -m file -a “path=/project/devops/abcd.txt  state=touch”
+
+Here, it will create an empty file called abcd.txt in all remote servers.
+
+### Ansible ad hoc commands command module ###
+ansible all -m command -a "apt-update"
+
+To run any linux commands on host servers we can use this module.
+
+### Ansible ad hoc command to create user ###
+ansible all -m user -a “name=ansible group=devops password=ansible123”
+
+It will create ansible user in all your host amchines and it will add this user to devops group and we can set password for this user with password argument.
+
+### Ansible ad hoc command to create a group ###
+ansible web -m group -a “name=devops state=present”
+
+It will create a group called devops in all your hosts that you defined in web.
