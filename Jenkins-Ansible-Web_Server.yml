@@ -14,6 +14,6 @@
              state: started
     - name: copy web content
       copy:
-          src: /root/index.html
-          dest: /var/www/html/index.html
+          src: /home/ubuntu/index.html
+          dest: /var/www/html/
 ...
