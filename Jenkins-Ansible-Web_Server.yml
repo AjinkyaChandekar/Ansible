@@ -15,6 +15,6 @@
              status: enabled
     - name: copy web content
       copy:
-          src: /root/home/index.html
+          src: /root/index.html
           dest: /var/www/html/
 ...
