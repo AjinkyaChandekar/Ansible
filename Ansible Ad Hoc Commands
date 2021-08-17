@@ -52,3 +52,6 @@ It will create ansible user in all your host amchines and it will add this user 
 ansible web -m group -a “name=devops state=present”
 
 It will create a group called devops in all your hosts that you defined in web.
+
+### Gathering Facts ###
+ansible all -m setup
