@@ -1,8 +1,8 @@
 ---
 - name: deploy web servers
   hosts: web_servers
-  #remote_user: root
-  #become: true
+  remote_user: root
+  become: true
   tasks:
     - name: install apache
       apt:
