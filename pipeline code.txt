@@ -1,0 +1,28 @@
+Add below pipeline code
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mydevopscoach/my-tf-iac-aws-repo']]])            
+
+          }
+        }
+        
+        stage ("Ansible Playbook") {
+            steps {
+			ansiblePlaybook credentialsId: 'ajinkya_key', installation: 'ansible', playbook: 'Jenkins-Ansible-Web_Server.yml'
+            }
+        }
+        
+       
+        
+    }
+}
+
+Here,
+checkout: EC2 Jenkins/Ansible pvt key added to Jenkins console 
+ajinkya_key: AWS key (pvt) added to Jenkins
+installation: Name field of ansible executable directory path (command: which ansible || o/p: /usr/bin/ansible )
